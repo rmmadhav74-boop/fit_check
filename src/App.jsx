@@ -4,15 +4,15 @@ const P = [
   { id:1,name:'NO SMOKING',price:1490,bg:'#F5F0DC',stock:'in',color:'Cream',oos:[],
     img:'/images/no-smoking.png' },
   { id:2,name:'EXCLUSIVE 1',price:1990,bg:'#0A0A0A',stock:'low',color:'Black',oos:['XL'],
-    vis:{brand:'-FITCHECK. "GLITCH-OP" ®',title:'Sync(it)',titleSz:22,titleCol:'#fff',border:'#1a1a1a'} },
+    img:'/images/no-smoking.png' },
   { id:3,name:'AT THE TOP',price:1090,bg:'#2D2D2D',stock:'low',color:'Charcoal',oos:[],
-    vis:{brand:'-FITCHECK. "RISE" ®',title:'See you at the top ↑',titleSz:18,titleCol:'#ccc',border:'#3a3a3a',italic:true} },
+    img:'/images/no-smoking.png' },
   { id:4,name:'WATER ON THE ROCKS',price:1190,bg:'#1A3A8A',stock:'low',color:'Royal Blue',oos:['XS','S','M','L','2XL'],
-    vis:{brand:'-FITCHECK. "DEEP-SEA" ®',title:'WATER\nON THE\nROCKS',titleSz:20,titleCol:'#fff',border:'#2a4a9a'} },
+    img:'/images/no-smoking.png' },
   { id:5,name:'FRAGILE',price:590,bg:'#8B1A1A',stock:'low',color:'Red',oos:[],fit:'Crop Fit',
-    vis:{brand:'-FITCHECK. "HANDLE" ®',title:'Fragile like a BOMB',titleSz:18,titleCol:'#fff',border:'#a33'} },
+    img:'/images/no-smoking.png' },
   { id:6,name:'ABSOLUT',price:1490,bg:'#D4E8A0',stock:'in',color:'Lime',oos:[],
-    vis:{brand:'-FITCHECK. "SOBER" ®',title:'ABSOLUTly\nSOBER',titleSz:22,titleCol:'#1a3a00',border:'#b5d880'} },
+    img:'/images/no-smoking.png' },
 ];
 
 const PV = ({p,size='full'}) => {
