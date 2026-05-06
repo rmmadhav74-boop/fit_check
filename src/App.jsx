@@ -1,18 +1,29 @@
 import { useState, useEffect, useCallback, useRef } from 'react';
 
-const P = [
   { id:1,name:'NO SMOKING',price:1490,bg:'#F5F0DC',stock:'in',color:'Cream',oos:[],
-    img:'/images/no-smoking.png' },
+    img:'/images/no-smoking.png', category:'OVERSIZED' },
   { id:2,name:'EXCLUSIVE 1',price:1990,bg:'#0A0A0A',stock:'low',color:'Black',oos:['XL'],
-    img:'/images/no-smoking.png' },
+    img:'/images/no-smoking.png', category:'NEW DROPS' },
   { id:3,name:'AT THE TOP',price:1090,bg:'#2D2D2D',stock:'low',color:'Charcoal',oos:[],
-    img:'/images/no-smoking.png' },
+    img:'/images/no-smoking.png', category:'CROP TOPS' },
   { id:4,name:'WATER ON THE ROCKS',price:1190,bg:'#1A3A8A',stock:'low',color:'Royal Blue',oos:['XS','S','M','L','2XL'],
-    img:'/images/no-smoking.png' },
+    img:'/images/no-smoking.png', category:'OVERSIZED' },
   { id:5,name:'FRAGILE',price:590,bg:'#8B1A1A',stock:'low',color:'Red',oos:[],fit:'Crop Fit',
-    img:'/images/no-smoking.png' },
+    img:'/images/no-smoking.png', category:'BABY TEES' },
   { id:6,name:'ABSOLUT',price:1490,bg:'#D4E8A0',stock:'in',color:'Lime',oos:[],
-    img:'/images/no-smoking.png' },
+    img:'/images/no-smoking.png', category:'POLOS' },
+  { id:7,name:'NEON NIGHT',price:1690,bg:'#D1FAE5',stock:'in',color:'Mint',oos:[],
+    img:'/images/no-smoking.png', category:'CROP TOPS' },
+  { id:8,name:'CYBER PUNK',price:2190,bg:'#FCE7F3',stock:'low',color:'Pink',oos:[],
+    img:'/images/no-smoking.png', category:'BABY TEES' },
+  { id:9,name:'STREET KINGS',price:1290,bg:'#FEF3C7',stock:'in',color:'Yellow',oos:[],
+    img:'/images/no-smoking.png', category:'OVERSIZED' },
+  { id:10,name:'VINTAGE WASH',price:1790,bg:'#E0E7FF',stock:'low',color:'Blue',oos:[],
+    img:'/images/no-smoking.png', category:'POLOS' },
+  { id:11,name:'GRAFFITI TEE',price:1490,bg:'#FEE2E2',stock:'in',color:'Red',oos:[],
+    img:'/images/no-smoking.png', category:'NEW DROPS' },
+  { id:12,name:'ACID TRIP',price:1990,bg:'#F3E8FF',stock:'in',color:'Purple',oos:[],
+    img:'/images/no-smoking.png', category:'CROP TOPS' },
 ];
 
 const PV = ({p,size='full'}) => {
@@ -63,6 +74,7 @@ export default function App(){
   const[show360,setShow360]=useState(false);
   const[angle360,setAngle360]=useState(0);
   const[activePreset,setActivePreset]=useState('Front');
+  const[activeCategory,setActiveCategory]=useState('NEW DROPS');
   const dragging=useRef(false);
   const dragStartX=useRef(0);
   const baseAngle=useRef(0);
@@ -106,7 +118,7 @@ export default function App(){
     </div></div>
 
     <nav className={`main-nav ${scrolled?'scrolled':''}`}><div className="main-nav-inner">
-      {navItems.map(n=><span key={n} className={`nav-link ${n==='NEW DROPS'?'active':''}`} onClick={()=>{if(view!=='grid')goGrid()}}>{n}</span>)}
+      {navItems.map(n=><span key={n} className={`nav-link ${n===activeCategory?'active':''}`} onClick={()=>{setActiveCategory(n);if(view!=='grid')goGrid()}}>{n}</span>)}
       <span className="nav-link track" onClick={goReturns}>TRACK ORDER</span>
       <button className="hamburger-btn" onClick={()=>setMobileMenu(true)}>☰</button>
     </div></nav>
@@ -115,14 +127,14 @@ export default function App(){
 
     {mobileMenu&&<div className="mobile-menu-overlay">
       <button className="mobile-menu-close" onClick={()=>setMobileMenu(false)}>✕</button>
-      {navItems.map(n=><div key={n} className={`mobile-menu-link ${n==='NEW DROPS'?'active':''}`} onClick={()=>{setMobileMenu(false);if(view!=='grid')goGrid()}}>{n}</div>)}
+      {navItems.map(n=><div key={n} className={`mobile-menu-link ${n===activeCategory?'active':''}`} onClick={()=>{setActiveCategory(n);setMobileMenu(false);if(view!=='grid')goGrid()}}>{n}</div>)}
       <div className="mobile-menu-link track" onClick={()=>{setMobileMenu(false);goReturns()}}>TRACK ORDER</div>
     </div>}
 
     {view==='grid'&&<>
-      <section className="hero"><h1>WHATS YOUR VIBE?</h1><p>Drop-worthy fits for Gen Z</p><button className="hero-cta">SHOP ALL</button></section>
-      <h2 className="section-heading">NEW DROPS</h2>
-      <div className="product-grid">{P.map(p=><div className="product-card" key={p.id} onClick={()=>openDetail(p)}>
+      <section className="hero"><h1>WHATS YOUR VIBE?</h1><p>Drop-worthy fits for Gen Z</p><button className="hero-cta" onClick={()=>setActiveCategory('SHOP ALL')}>SHOP ALL</button></section>
+      <h2 className="section-heading">{activeCategory}</h2>
+      <div className="product-grid pipeline-effect">{(activeCategory==='SHOP ALL'?P:P.filter(p=>p.category===activeCategory)).map((p,i)=><div className="product-card pipeline-card" style={{animationDelay:`${i*0.05}s`}} key={p.id} onClick={()=>openDetail(p)}>
         <div className="card-img" style={{background:p.bg}}><PV p={p}/></div>
         <div className="card-body"><div className="card-name">{p.name}</div><div className="card-price">Rs. {p.price.toLocaleString('en-IN')}</div>
         <div className="card-badges"><span className="badge-verified">✓ 134 verified</span><span className="badge-aifit">AI Fit: M</span></div></div>
