@@ -97,7 +97,7 @@ export default function App(){
   return(<>
     <div className="top-strip"><div className="top-strip-inner">
       <div className="top-strip-socials"><SvgFB/><SvgIG/><SvgYT/><SvgTW/></div>
-      <div className="top-strip-logo">-FITCHECK.</div>
+      <div className="top-strip-logo" onClick={goGrid}>-FITCHECK.</div>
       <div className="top-strip-actions">
         <button aria-label="Search"><SvgSearch/></button>
         <button aria-label="Account"><SvgUser/></button>

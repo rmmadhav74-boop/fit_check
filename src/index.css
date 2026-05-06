@@ -16,7 +16,7 @@ ul{list-style:none}
 .top-strip-socials{display:flex;gap:12px;align-items:center}
 .top-strip-socials svg{width:16px;height:16px;color:#fff;opacity:.5;transition:opacity .2s;cursor:pointer}
 .top-strip-socials svg:hover{opacity:1}
-.top-strip-logo{font-family:var(--font-h);font-size:22px;font-weight:700;letter-spacing:.06em;text-transform:uppercase}
+.top-strip-logo{font-family:var(--font-h);font-size:22px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;cursor:pointer}
 .top-strip-actions{display:flex;align-items:center;gap:20px}
 .top-strip-actions button{position:relative;opacity:.7;transition:opacity .2s}
 .top-strip-actions button:hover{opacity:1}
