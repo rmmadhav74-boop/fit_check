@@ -1,5 +1,6 @@
 import { useState, useEffect, useCallback, useRef } from 'react';
 
+const P = [
   { id:1,name:'NO SMOKING',price:1490,bg:'#F5F0DC',stock:'in',color:'Cream',oos:[],
     img:'/images/no-smoking.png', category:'OVERSIZED' },
   { id:2,name:'EXCLUSIVE 1',price:1990,bg:'#0A0A0A',stock:'low',color:'Black',oos:['XL'],
