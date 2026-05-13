@@ -1,7 +1,16 @@
 import { useState, useEffect, useRef, Suspense } from 'react';
-import { useFrame, useLoader } from '@react-three/fiber';
+import { useFrame, useLoader, useThree } from '@react-three/fiber';
 import { OrbitControls, Float, ContactShadows } from '@react-three/drei';
 import * as THREE from 'three';
+
+function SceneSetup() {
+  const { scene, gl } = useThree();
+  useEffect(() => {
+    scene.background = new THREE.Color('#000000');
+    gl.setClearColor('#000000', 1);
+  }, [scene, gl]);
+  return null;
+}
 
 function getShirtColor(colorName, bgHex) {
   const map = {
@@ -129,6 +138,7 @@ export default function TShirtScene({ sel, presetAngle, renderMode }) {
 
   return (
     <>
+      <SceneSetup />
       <OrbitControls enableZoom={true} maxDistance={9} minDistance={3} makeDefault />
       
       <Float speed={2.5} rotationIntensity={0.15} floatIntensity={0.5}>
@@ -137,9 +147,9 @@ export default function TShirtScene({ sel, presetAngle, renderMode }) {
             <mesh castShadow receiveShadow>
               <extrudeGeometry args={[teeShape, teeExtrudeSettings]} />
               <meshStandardMaterial 
-                roughness={0.65} 
-                metalness={0.15} 
-                color={shirtColor} 
+                roughness={0.9}
+                metalness={0}
+                color="#ffffff"
                 wireframe={false}
               />
             </mesh>

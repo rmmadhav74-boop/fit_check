@@ -165,8 +165,8 @@ export default function App() {
                   <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 12 }}>
                     <div className="view360-title" style={{ margin: 0 }}>▶ 360° 3D PRODUCT PROTOTYPE</div>
                   </div>
-                  <div className="view360-stage" style={{ height: 340, background: sel.bg, position: 'relative', borderRadius: 8, border: '1px solid #2A1A4A', overflow: 'hidden' }}>
-                    <Canvas camera={{ position: [0, 0, 5.5], fov: 50 }}>
+                  <div className="view360-stage" style={{ height: 340, background: '#000000', position: 'relative', borderRadius: 8, border: '1px solid #2A1A4A', overflow: 'hidden' }}>
+                    <Canvas camera={{ position: [0, 0, 5.5], fov: 50 }} style={{ background: '#000000' }}>
                       <ambientLight intensity={0.8} />
                       <directionalLight position={[10, 10, 12]} intensity={1.5} />
                       <pointLight position={[-10, -10, -10]} intensity={0.5} />
